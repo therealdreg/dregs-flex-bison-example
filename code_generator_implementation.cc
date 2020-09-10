@@ -112,10 +112,18 @@ std::string eq_code(type t) {
 
 std::string binop_expression::get_code() const {
     std::stringstream ss;
+    if (left->is_const_expr()) {
+    ss << "mov eax, " << left->get_value() << std::endl;
+    } else {
     ss << left->get_code();
+    }
     ss << "push eax" << std::endl;
+    if (right->is_const_expr()) {
+    ss << "mov ecx, " << right->get_value() << std::endl;
+    } else {
     ss << right->get_code();
     ss << "mov ecx,eax" << std::endl;
+    }
     ss << "pop eax" << std::endl;
     ss << (op == "=" ? eq_code(left->get_type()) : operator_code(op));
     return ss.str();
@@ -125,28 +133,48 @@ std::string trinaryop_expression::get_code() const {
     std::string else_label = next_label();
     std::string end_label = next_label();
     std::stringstream ss;
+    if (cond->is_const_expr()) {
+    ss << "mov al, " << cond->get_value() << std::endl;
+    } else {
     ss << cond->get_code();
+    }
     ss << "cmp al,1" << std::endl;
     ss << "jne near " << else_label << std::endl;
+    if (left->is_const_expr()) {
+    ss << "mov eax, " << left->get_value() << std::endl;
+    } else {
     ss << left->get_code();
+    }
     ss << "jmp " << end_label << std::endl;
     ss << else_label << ":" << std::endl;
+    if (right->is_const_expr()) {
+    ss << "mov eax, " << right->get_value() << std::endl;
+    } else {
     ss << right->get_code();
+    }
     ss << end_label << ":" << std::endl;
     return ss.str();
 }
 
 std::string not_expression::get_code() const {
     std::stringstream ss;
+    if (operand->is_const_expr()) {
+    ss << "mov al, " << operand->get_value() << std::endl;
+    } else {
     ss << operand->get_code();
+    }
     ss << "xor al,1" << std::endl;
     return ss.str();
 }
 
 std::string assign_instruction::get_code() {
     std::stringstream ss;
+    if (right->is_const_expr()) {
+    ss << "mov [" + symbol_table[left].label + "]," << right->get_value() << std::endl;
+    } else {
     ss << right->get_code();
     ss << "mov [" + symbol_table[left].label + "]," << get_register(symbol_table[left].symbol_type) << std::endl;
+    }
     return ss.str();
 }
 
@@ -211,14 +239,23 @@ std::string for_instruction::get_code() {
     std::string begin_label = next_label();
     std::string end_label = next_label();
     std::stringstream ss;
+    ss << std::endl;
 
+    if (lowerlimit->is_const_expr()) {
+    ss << "mov eax, " << lowerlimit->get_value() << std::endl;
+    } else {
     ss << lowerlimit->get_code();
+    }
     ss << "mov [" + symbol_table[id].label + "]," << get_register(symbol_table[id].symbol_type) << std::endl;
 
     ss << begin_label << ":" << std::endl;
     ss << "mov " << get_register(symbol_table[id].symbol_type) << ", [" + symbol_table[id].label + "]"  << std::endl;
     ss << "push eax" << std::endl;
+    if (upperlimit->is_const_expr()) {
+    ss << "mov ecx, " << upperlimit->get_value() << std::endl;
+    } else {
     ss << upperlimit->get_code();
+    }
     ss << "mov ecx,eax" << std::endl;
     ss << "pop eax" << std::endl;
 
