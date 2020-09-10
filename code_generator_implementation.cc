@@ -211,7 +211,7 @@ void generate_code(std::list<instruction*>* commands) {
     std::cout << "extern read_boolean" << std::endl;
     std::cout << std::endl;
     std::cout << "section .bss" << std::endl;
-    std::map<std::string,symbol>::iterator it;
+    std::unordered_map<std::string,symbol>::iterator it;
     for(it = symbol_table.begin(); it != symbol_table.end(); ++it) {
         std::cout << it->second.get_code();
     }

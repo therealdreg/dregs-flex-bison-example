@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 
-std::map<std::string, symbol> symbol_table;
+std::unordered_map<std::string, symbol> symbol_table;
 
 type number_expression::get_type() const {
     return natural;

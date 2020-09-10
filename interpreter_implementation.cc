@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 
-std::map<std::string, unsigned> value_table;
+std::unordered_map<std::string, unsigned> value_table;
 
 unsigned number_expression::get_value() const {
     return value;

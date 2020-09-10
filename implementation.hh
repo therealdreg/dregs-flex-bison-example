@@ -3,7 +3,7 @@
 
 #include <string>
 #include <list>
-#include <map>
+#include <unordered_map>
 
 enum mode {compiler, interpreter};
 
@@ -57,8 +57,8 @@ struct symbol {
     std::string label;
 };
 
-extern std::map<std::string, symbol> symbol_table;
-extern std::map<std::string, unsigned> value_table;
+extern std::unordered_map<std::string, symbol> symbol_table;
+extern std::unordered_map<std::string, unsigned> value_table;
 
 class id_expression : public expression {
   public:
