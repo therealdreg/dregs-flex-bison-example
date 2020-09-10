@@ -9,8 +9,16 @@ unsigned number_expression::get_value() const {
     return value;
 }
 
+bool number_expression::is_const_expr() const {
+    return true;
+}
+
 unsigned boolean_expression::get_value() const {
     return (unsigned)value;
+}
+
+bool boolean_expression::is_const_expr() const {
+    return true;
 }
 
 unsigned id_expression::get_value() const {
@@ -18,6 +26,10 @@ unsigned id_expression::get_value() const {
         error(line, std::string("Variable has not been initialized: ") + name);
     }
     return value_table[name];
+}
+
+bool id_expression::is_const_expr() const {
+    return false;
 }
 
 unsigned binop_expression::get_value() const {
@@ -53,6 +65,10 @@ unsigned binop_expression::get_value() const {
     return 42;
 }    
 
+bool binop_expression::is_const_expr() const {
+    return left->is_const_expr() && right->is_const_expr();
+}
+
 unsigned trinaryop_expression::get_value() const {
     if (cond->get_value()) {
        return left->get_value();
@@ -61,9 +77,19 @@ unsigned trinaryop_expression::get_value() const {
     }
 }    
 
+bool trinaryop_expression::is_const_expr() const {
+    return cond->is_const_expr()
+        && left->is_const_expr()
+        && right->is_const_expr();
+}
+
 
 unsigned not_expression::get_value() const {
     return !(bool)(operand->get_value());
+}
+
+bool not_expression::is_const_expr() const {
+    return operand->is_const_expr();
 }
 
 void assign_instruction::execute() {

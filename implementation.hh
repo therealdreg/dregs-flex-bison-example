@@ -19,6 +19,7 @@ class expression {
     virtual ~expression();
     virtual std::string get_code() const = 0;
     virtual unsigned get_value() const = 0;
+    virtual bool is_const_expr() const = 0;
 };
 
 class number_expression : public expression {
@@ -27,6 +28,7 @@ class number_expression : public expression {
     type get_type() const;
     std::string get_code() const;
     unsigned get_value() const;    
+    bool is_const_expr() const;
   private:
     unsigned value;
 };
@@ -37,6 +39,7 @@ class boolean_expression : public expression {
     type get_type() const;
     std::string get_code() const;
     unsigned get_value() const;    
+    bool is_const_expr() const;
   private:
     bool value;
 };
@@ -66,6 +69,7 @@ class id_expression : public expression {
     type get_type() const;
     std::string get_code() const;
     unsigned get_value() const;    
+    bool is_const_expr() const;
   private:
     int line;
     std::string name;
@@ -78,6 +82,7 @@ class binop_expression : public expression {
     type get_type() const;
     std::string get_code() const;
     unsigned get_value() const;    
+    bool is_const_expr() const;
   private:
     int line;
     std::string op;
@@ -92,6 +97,7 @@ class trinaryop_expression : public expression {
     type get_type() const;
     std::string get_code() const;
     unsigned get_value() const;
+    bool is_const_expr() const;
   private:
     int line;
     expression* cond;
@@ -106,6 +112,7 @@ class not_expression : public expression {
     type get_type() const;
     std::string get_code() const;
     unsigned get_value() const;    
+    bool is_const_expr() const;
   private:
     int line;
     std::string op;
@@ -131,6 +138,7 @@ class assign_instruction : public instruction {
     void type_check();
     std::string get_code();
     void execute();
+    bool is_const_expr() const;
   private:
     std::string left;
     expression* right;
