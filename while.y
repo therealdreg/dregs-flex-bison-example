@@ -32,6 +32,8 @@ int yylex(yy::parser::semantic_type* yylval, yy::parser::location_type* yylloc);
 %token CL
 %token COL
 %token QUE
+%token FOR
+%token TO
 %token <std::string> ID
 %token <std::string> NUM
 
@@ -122,6 +124,11 @@ command:
     WHI expression DO commands DON
     {
         $$ = new while_instruction(@1.begin.line, $2, $4);
+    }
+|
+    FOR ID ASN expression TO expression DO commands DON
+    {
+        $$ = new for_instruction(@1.begin.line, $2, $4, $6, $8);
     }
 ;
 

@@ -183,6 +183,20 @@ class while_instruction : public instruction {
     std::list<instruction*>* body;
 };
 
+class for_instruction : public instruction {
+  public:
+    for_instruction(int _line, std::string _id, expression* _lowerlimit, expression* _upperlimit, std::list<instruction*>* _body);
+    ~for_instruction();
+    void type_check();
+    std::string get_code();
+    void execute();
+  private:
+    std::string id;
+    expression* lowerlimit;
+    expression* upperlimit;
+    std::list<instruction*>* body;
+};
+
 void type_check_commands(std::list<instruction*>* commands);
 
 void generate_code_of_commands(std::ostream& out, std::list<instruction*>* commands);

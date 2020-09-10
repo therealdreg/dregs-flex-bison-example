@@ -12,6 +12,8 @@ using namespace yy;
 
 %%
 
+for                         return parser::token::FOR;
+to                          return parser::token::TO;
 program                     return parser::token::PRG;
 begin                       return parser::token::BEG;
 end                         return parser::token::END;

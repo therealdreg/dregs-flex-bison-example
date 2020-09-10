@@ -113,6 +113,13 @@ void while_instruction::execute() {
     }
 }
 
+void for_instruction::execute() {
+    for (unsigned i = lowerlimit->get_value(); i < upperlimit->get_value(); ++i) {
+        value_table[id] = i;
+        execute_commands(body);
+    }
+}
+
 void execute_commands(std::list<instruction*>* commands) {
     if (!commands)
        return;

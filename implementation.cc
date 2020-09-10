@@ -107,6 +107,16 @@ while_instruction::~while_instruction() {
     delete condition;
     delete_commands(body);
 }
+    
+for_instruction::for_instruction(int _line, std::string _id, expression* _lowerlimit, expression* _upperlimit, std::list<instruction*>* _body)
+    : instruction(_line), id(_id), lowerlimit(_lowerlimit), upperlimit(_upperlimit), body(_body)
+{}
+
+for_instruction::~for_instruction() {
+    delete lowerlimit;
+    delete upperlimit;
+    delete_commands(body);
+}
 
 void delete_commands(std::list<instruction*>* commands) {
     if(!commands) {

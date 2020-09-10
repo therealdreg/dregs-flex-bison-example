@@ -207,6 +207,12 @@ std::string while_instruction::get_code() {
     return ss.str();
 }
 
+std::string for_instruction::get_code() {
+    std::stringstream ss;
+    ss << std::endl;
+    return ss.str();
+}
+
 void generate_code_of_commands(std::ostream& out, std::list<instruction*>* commands) {
     if(!commands) {
         return;

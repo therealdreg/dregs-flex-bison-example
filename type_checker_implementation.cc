@@ -77,11 +77,16 @@ type not_expression::get_type() const {
     return boolean;
 }
 
-void assign_instruction::type_check() {
-    if(symbol_table.count(left) == 0) {
-        error(line, std::string("Undefined variable: ") + left);
+static type get_type_for_symbol(int line, std::string &id) {
+    if (symbol_table.count(id) == 0) {
+        error(line, std::string("Undefined variable: ") + id);
+        return natural;//dead code
     }
-    if(symbol_table[left].symbol_type != right->get_type()) {
+    return symbol_table[id].symbol_type;
+}
+
+void assign_instruction::type_check() {
+    if(get_type_for_symbol(line, left) != right->get_type()) {
         error(line, "Left and right hand sides of assignment are of different types.");
     }
 }
@@ -107,6 +112,17 @@ void if_instruction::type_check() {
 void while_instruction::type_check() {
     if(condition->get_type() != boolean) {
         error(line, "Condition of 'while' instruction is not boolean.");
+    }
+    type_check_commands(body);
+}
+
+void for_instruction::type_check() {
+    type id_type = get_type_for_symbol(line, id); 
+    if(id_type != lowerlimit->get_type()) {
+        error(line, "FOR var and init value are of different types.");
+    }
+    if(id_type != upperlimit->get_type()) {
+        error(line, "FOR var and limit value are of different types.");
     }
     type_check_commands(body);
 }
