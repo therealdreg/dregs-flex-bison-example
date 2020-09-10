@@ -170,7 +170,7 @@ std::string not_expression::get_code() const {
 std::string assign_instruction::get_code() {
     std::stringstream ss;
     if (right->is_const_expr()) {
-    ss << "mov [" + symbol_table[left].label + "]," << right->get_value() << std::endl;
+    ss << "mov dword [" + symbol_table[left].label + "]," << right->get_value() << std::endl;
     } else {
     ss << right->get_code();
     ss << "mov [" + symbol_table[left].label + "]," << get_register(symbol_table[left].symbol_type) << std::endl;
