@@ -1,6 +1,7 @@
 #include "implementation.hh"
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 std::unordered_map<std::string, unsigned> value_table;
 
@@ -103,12 +104,8 @@ void while_instruction::execute() {
 }
 
 void execute_commands(std::list<instruction*>* commands) {
-    if(!commands) {
-        return;
-    }
+    if (!commands)
+       return;
 
-    std::list<instruction*>::iterator it;
-    for(it = commands->begin(); it != commands->end(); ++it) {
-        (*it)->execute();
-    }
+    std::for_each(commands->begin(), commands->end(), [](auto command) { command->execute(); });
 }
