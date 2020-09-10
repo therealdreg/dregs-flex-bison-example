@@ -140,10 +140,21 @@ void while_instruction::execute() {
 }
 
 void for_instruction::execute() {
-    for (unsigned i = lowerlimit->get_value(); i < upperlimit->get_value(); ++i) {
-        value_table[id] = i;
-        execute_commands(body);
+    const unsigned from = lowerlimit->get_value();
+
+    if (upperlimit->is_const_expr()) {
+        const unsigned to = upperlimit->get_value();
+        for (unsigned i = from; i < to; ++i) {
+            value_table[id] = i;
+            execute_commands(body);
+        }
+    } else {
+        for (unsigned i = from; i < upperlimit->get_value(); ++i) {
+            value_table[id] = i;
+            execute_commands(body);
+        }
     }
+
 }
 
 void execute_commands(std::list<instruction*>* commands) {
