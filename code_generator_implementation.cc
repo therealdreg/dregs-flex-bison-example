@@ -121,6 +121,21 @@ std::string binop_expression::get_code() const {
     return ss.str();
 }
 
+std::string trinaryop_expression::get_code() const {
+    std::string else_label = next_label();
+    std::string end_label = next_label();
+    std::stringstream ss;
+    ss << cond->get_code();
+    ss << "cmp al,1" << std::endl;
+    ss << "jne near " << else_label << std::endl;
+    ss << left->get_code();
+    ss << "jmp " << end_label << std::endl;
+    ss << else_label << ":" << std::endl;
+    ss << right->get_code();
+    ss << end_label << ":" << std::endl;
+    return ss.str();
+}
+
 std::string not_expression::get_code() const {
     std::stringstream ss;
     ss << operand->get_code();

@@ -59,6 +59,17 @@ type binop_expression::get_type() const {
     return return_type(op);
 }
 
+type trinaryop_expression::get_type() const {
+    if(cond->get_type() != boolean) {
+        error(line, "Condition part of ? : operator is not boolean type.");
+    }
+    if(left->get_type() != right->get_type()) {
+        error(line, "Types of the ? : operator result are if different types.");
+    }
+
+    return left->get_type();
+}
+
 type not_expression::get_type() const {
     if(operand->get_type() != boolean) {
         error(line, "Operand of 'not' is not boolean.");

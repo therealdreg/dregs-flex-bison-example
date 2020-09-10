@@ -40,6 +40,16 @@ binop_expression::binop_expression(int _line, std::string _op, expression* _left
     : line(_line), op(_op), left(_left), right(_right)
 {}
 
+trinaryop_expression::trinaryop_expression(int _line, expression* _cond, expression* _left, expression* _right)
+    : line(_line), cond(_cond), left(_left), right(_right)
+{}
+
+trinaryop_expression::~trinaryop_expression() {
+    delete cond;
+    delete left;
+    delete right;
+}
+
 not_expression::~not_expression() {
     delete operand;
 }

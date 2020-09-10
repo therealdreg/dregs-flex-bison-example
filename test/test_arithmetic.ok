@@ -18,4 +18,5 @@ begin
     write(5=22)
     write(5=5)
     write(((3+2)*4/5+1)%2)
+    write(((1<2)?112:111))
 end

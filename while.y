@@ -30,6 +30,8 @@ int yylex(yy::parser::semantic_type* yylval, yy::parser::location_type* yylloc);
 %token ASN
 %token OP
 %token CL
+%token COL
+%token QUE
 %token <std::string> ID
 %token <std::string> NUM
 
@@ -142,6 +144,11 @@ expression:
     ID
     {
         $$ = new id_expression(@1.begin.line, $1);
+    }
+|
+    OP expression QUE expression COL expression CL
+    {
+        $$ = new trinaryop_expression(@2.begin.line, $2, $4, $6);
     }
 |
     expression ADD expression

@@ -53,6 +53,15 @@ unsigned binop_expression::get_value() const {
     return 42;
 }    
 
+unsigned trinaryop_expression::get_value() const {
+    if (cond->get_value()) {
+       return left->get_value();
+    } else {
+       return right->get_value();
+    }
+}    
+
+
 unsigned not_expression::get_value() const {
     return !(bool)(operand->get_value());
 }
