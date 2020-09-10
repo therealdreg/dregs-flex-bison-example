@@ -131,17 +131,17 @@ class instruction {
     int line;
 };
 
-class assign_instruction : public instruction {
+class assign_instructions : public instruction {
   public:
-    assign_instruction(int _line, std::string _left, expression* right);
-    ~assign_instruction();
+    assign_instructions(int _line, std::list<std::string>* _left, std::list<expression*>* right);
+    ~assign_instructions();
     void type_check();
     std::string get_code();
     void execute();
     bool is_const_expr() const;
   private:
-    std::string left;
-    expression* right;
+    std::list<std::string>* left;
+    std::list<expression*>* right;
 };
 
 class read_instruction : public instruction {

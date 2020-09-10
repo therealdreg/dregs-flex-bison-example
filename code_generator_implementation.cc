@@ -167,13 +167,16 @@ std::string not_expression::get_code() const {
     return ss.str();
 }
 
-std::string assign_instruction::get_code() {
+std::string assign_instructions::get_code() {
     std::stringstream ss;
-    if (right->is_const_expr()) {
-    ss << "mov dword [" + symbol_table[left].label + "]," << right->get_value() << std::endl;
+    auto right_it = right->begin();
+    for (auto left_it = left->begin(); left_it != left->end(); ++left_it, ++right_it) {
+    if ((*right_it)->is_const_expr()) {
+    ss << "mov " << get_register(symbol_table[*left_it].symbol_type) + "," << (*right_it)->get_value() << std::endl;
     } else {
-    ss << right->get_code();
-    ss << "mov [" + symbol_table[left].label + "]," << get_register(symbol_table[left].symbol_type) << std::endl;
+    ss << (*right_it)->get_code();
+    }
+    ss << "mov [" + symbol_table[*left_it].label + "]," << get_register(symbol_table[*left_it].symbol_type) << std::endl;
     }
     return ss.str();
 }

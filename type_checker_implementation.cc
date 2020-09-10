@@ -1,6 +1,7 @@
 #include "implementation.hh"
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 std::unordered_map<std::string, symbol> symbol_table;
 
@@ -85,9 +86,15 @@ static type get_type_for_symbol(int line, std::string &id) {
     return symbol_table[id].symbol_type;
 }
 
-void assign_instruction::type_check() {
-    if(get_type_for_symbol(line, left) != right->get_type()) {
-        error(line, "Left and right hand sides of assignment are of different types.");
+void assign_instructions::type_check() {
+    if (left->size() != right->size()) {
+        error(line, "Left and right hand sides number of assignment are of different.");
+    }
+    auto right_it = right->begin();
+    for (auto left_it = left->begin(); left_it != left->end(); ++left_it, ++right_it) {
+       if(get_type_for_symbol(line, *left_it) != (*right_it)->get_type()) {
+           error(line, "Left and right hand sides of assignment are of different types.");
+       }
     }
 }
 

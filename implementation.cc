@@ -69,11 +69,12 @@ int instruction::get_line() {
     return line;
 }
 
-assign_instruction::assign_instruction(int _line, std::string _left, expression* _right)
+assign_instructions::assign_instructions(int _line, std::list<std::string>* _left, std::list<expression*>* _right)
     : instruction(_line), left(_left), right(_right)
 {}
 
-assign_instruction::~assign_instruction() {
+assign_instructions::~assign_instructions() {
+    //TODO: proper free
     delete right;
 }
 

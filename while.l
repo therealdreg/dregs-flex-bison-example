@@ -48,6 +48,7 @@ not                         return parser::token::NOT;
 ")"                         return parser::token::CL;
 \:                          return parser::token::COL;
 \?                          return parser::token::QUE;
+","                         return parser::token::COM;
 [a-zA-Z_][a-zA-Z0-9_]*      return parser::token::ID;
 [0-9]+                      return parser::token::NUM;
 [ \t\n]+                    // Whitespaces skipped.

@@ -34,6 +34,7 @@ int yylex(yy::parser::semantic_type* yylval, yy::parser::location_type* yylloc);
 %token QUE
 %token FOR
 %token TO
+%token COM
 %token <std::string> ID
 %token <std::string> NUM
 
@@ -48,6 +49,8 @@ int yylex(yy::parser::semantic_type* yylval, yy::parser::location_type* yylloc);
 %type <expression*> expression
 %type <instruction*> command
 %type <std::list<instruction*>* > commands
+%type <std::list<std::string>* > ids
+%type <std::list<expression*>* > expressions
 
 %%
 
@@ -95,6 +98,34 @@ commands:
     }
 ;
 
+ids:
+    ID
+    {
+         $$ = new std::list<std::string>();
+         $$->push_back($1);
+    }
+|
+    ids COM ID
+    {
+          $1->push_back($3);
+          $$ = $1;
+    }
+;
+
+expressions:
+    expression
+    {
+         $$ = new std::list<expression*>();
+         $$->push_back($1);
+    }
+|
+    expressions COM expression
+    {
+          $1->push_back($3);
+          $$ = $1;
+    }
+;
+
 command:
     REA OP ID CL
     {
@@ -106,9 +137,9 @@ command:
         $$ = new write_instruction(@1.begin.line, $3);
     }
 |
-    ID ASN expression
+    ids ASN expressions
     {
-        $$ = new assign_instruction(@2.begin.line, $1, $3);
+        $$ = new assign_instructions(@2.begin.line, $1, $3);
     }
 |
     IF expression THE commands EIF

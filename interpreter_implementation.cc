@@ -92,8 +92,13 @@ bool not_expression::is_const_expr() const {
     return operand->is_const_expr();
 }
 
-void assign_instruction::execute() {
-    value_table[left] = right->get_value();
+void assign_instructions::execute() {
+    auto right_it = right->begin();
+    std::for_each(left->begin(), left->end(), [&right_it](auto item) {
+       value_table[item] = (*right_it)->get_value();
+       ++right_it;
+    });
+    //value_table[left] = right->get_value();
 }
 
 void read_instruction::execute() {
