@@ -208,8 +208,39 @@ std::string while_instruction::get_code() {
 }
 
 std::string for_instruction::get_code() {
+    std::string begin_label = next_label();
+    std::string end_label = next_label();
     std::stringstream ss;
-    ss << std::endl;
+
+    ss << lowerlimit->get_code();
+    ss << "mov [" + symbol_table[id].label + "]," << get_register(symbol_table[id].symbol_type) << std::endl;
+
+    ss << begin_label << ":" << std::endl;
+    ss << "mov " << get_register(symbol_table[id].symbol_type) << ", [" + symbol_table[id].label + "]"  << std::endl;
+    ss << "push eax" << std::endl;
+    ss << upperlimit->get_code();
+    ss << "mov ecx,eax" << std::endl;
+    ss << "pop eax" << std::endl;
+
+    // i < upperlimit
+    ss << "cmp eax,ecx" << std::endl;
+    ss << "mov al,0" << std::endl;
+    ss << "mov cx,1" << std::endl;
+    ss << "cmovb ax,cx" << std::endl;
+
+    ss << "cmp al,1" << std::endl;
+    ss << "jne near " << end_label << std::endl;
+
+    generate_code_of_commands(ss, body);
+
+    ss << "mov " << get_register(symbol_table[id].symbol_type) << ", [" + symbol_table[id].label + "]"  << std::endl;
+    ss << "inc " << get_register(symbol_table[id].symbol_type) << std::endl;
+    ss << "mov [" + symbol_table[id].label + "]," << get_register(symbol_table[id].symbol_type) << std::endl;
+
+    ss << "jmp " << begin_label << std::endl;
+
+    ss << end_label << ":" << std::endl;
+
     return ss.str();
 }
 
