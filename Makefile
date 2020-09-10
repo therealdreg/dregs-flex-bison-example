@@ -1,5 +1,5 @@
 while: lex.yy.cc while.cc while.tab.cc while.tab.hh implementation.hh implementation.cc type_checker_implementation.cc code_generator_implementation.cc interpreter_implementation.cc
-	g++ lex.yy.cc while.cc while.tab.cc implementation.cc type_checker_implementation.cc code_generator_implementation.cc interpreter_implementation.cc -o while
+	$(CXX) $(CFLAGS) lex.yy.cc while.cc while.tab.cc implementation.cc type_checker_implementation.cc code_generator_implementation.cc interpreter_implementation.cc -o while
 
 lex.yy.cc: while.l
 	flex while.l
