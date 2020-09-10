@@ -97,7 +97,6 @@ void if_instruction::execute() {
 }
 
 void while_instruction::execute() {
-    std::list<instruction*>::iterator it;
     while(condition->get_value()) {
         execute_commands(body);
     }
