@@ -252,7 +252,19 @@ std::string for_instruction::get_code() {
     std::string begin_label = next_label();
     std::string end_label = next_label();
     std::stringstream ss;
-    ss << std::endl;
+
+    //loop unroll
+    if (lowerlimit->is_const_expr() && upperlimit->is_const_expr()) {
+       for (unsigned i = lowerlimit->get_value(); i < upperlimit->get_value(); ++i) {
+           ss << "mov eax, " << i << std::endl;
+           ss << "mov [" + symbol_table[id].label + "], eax" << std::endl;
+
+           generate_code_of_commands(ss, body);
+           ss << std::endl;
+       }
+
+       return ss.str();
+    }
 
     if (lowerlimit->is_const_expr()) {
     ss << "mov eax, " << lowerlimit->get_value() << std::endl;
