@@ -171,12 +171,22 @@ std::string assign_instructions::get_code() {
     std::stringstream ss;
     auto right_it = right->begin();
     for (auto left_it = left->begin(); left_it != left->end(); ++left_it, ++right_it) {
-    if ((*right_it)->is_const_expr()) {
-    ss << "mov " << get_register(symbol_table[*left_it].symbol_type) + "," << (*right_it)->get_value() << std::endl;
-    } else {
-    ss << (*right_it)->get_code();
+        if ((*right_it)->is_const_expr()) {
+            //do not consume stack space
+        } else {
+            ss << (*right_it)->get_code();
+            ss << "push eax" << std::endl;
+        }
     }
-    ss << "mov [" + symbol_table[*left_it].label + "]," << get_register(symbol_table[*left_it].symbol_type) << std::endl;
+
+    auto rright_it = right->rbegin();
+    for (auto left_it = left->rbegin(); left_it != left->rend(); ++left_it, ++rright_it) {
+        if ((*rright_it)->is_const_expr()) {
+            ss << "mov " << get_register(symbol_table[*left_it].symbol_type) << ", " << (*rright_it)->get_value() << std::endl;
+        } else {
+            ss << "pop eax" << std::endl;
+        }
+        ss << "mov [" + symbol_table[*left_it].label + "]," << get_register(symbol_table[*left_it].symbol_type) << std::endl;
     }
     return ss.str();
 }

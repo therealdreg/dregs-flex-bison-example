@@ -93,12 +93,16 @@ bool not_expression::is_const_expr() const {
 }
 
 void assign_instructions::execute() {
-    auto right_it = right->begin();
-    std::for_each(left->begin(), left->end(), [&right_it](auto item) {
-       value_table[item] = (*right_it)->get_value();
-       ++right_it;
+    std::list<unsigned> results;
+    std::for_each(right->begin(), right->end(), [&results](auto item) {
+       results.push_back( item->get_value() );
     });
-    //value_table[left] = right->get_value();
+
+    auto result_it = results.begin();
+    std::for_each(left->begin(), left->end(), [&result_it](auto item) {
+       value_table[item] = *result_it;
+       ++result_it;
+    });
 }
 
 void read_instruction::execute() {
