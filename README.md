@@ -105,7 +105,84 @@ To run the executable output:
 - improve CI (more github actions, add more distros...)
 - clang-format + clang-tidy
 - docker
-- windows instructions ( https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ )
+
+- windows instructions ( https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ ):
+
+```
+C:\Users\dreg\Desktop\repos\dregs-flex-bison-example>mingw32-make
+win_flex while.l
+win_bison -d while.y
+g++  -I . lex.yy.cc while.cc while.tab.cc implementation.cc type_checker_implementation.cc code_generator_implementation.cc interpreter_implementation.cc -o while
+
+C:\Users\dreg\Desktop\repos\dregs-flex-bison-example>type test\test_arithmetic.ok
+program test_arithmetic
+begin
+    write(2+3)
+    write(3-2)
+    write(2*3)
+    write(22/5)
+    write(22%5)
+    write(22<5)
+    write(5<22)
+    write(5>22)
+    write(22>5)
+    write(22>=5)
+    write(5>=22)
+    write(5<=22)
+    write(22<=5)
+    write(22<=22)
+    write(22>=22)
+    write(5=22)
+    write(5=5)
+    write(((3+2)*4/5+1)%2)
+    write(((1<2)?112:111))
+end
+
+C:\Users\dreg\Desktop\repos\dregs-flex-bison-example>while.exe -i test\test_arithmetic.ok
+5
+1
+6
+4
+2
+false
+true
+false
+true
+true
+false
+true
+false
+true
+true
+false
+true
+1
+112
+
+C:\Users\dreg\Desktop\repos\dregs-flex-bison-example>dir /b /a-d
+.gitattributes
+.gitignore
+code_generator_implementation.cc
+FlexLexer.h
+implementation.cc
+implementation.hh
+interpreter_implementation.cc
+io.c
+lex.yy.cc
+LICENSE
+location.hh
+Makefile
+position.hh
+README.md
+stack.hh
+type_checker_implementation.cc
+while.cc
+while.exe
+while.l
+while.tab.cc
+while.tab.hh
+while.y
+```
 
 ## License
 This software is licensed under the MIT license. See the *LICENSE* file for details.
