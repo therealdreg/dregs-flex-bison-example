@@ -4,6 +4,32 @@ A compiler and interpreter of a toy language. Using *C++*, *Flex* and *Bison*.
 ## The toy language
 The language is called the *While language*. Its different variants often serve educational purposes. It has two types (*boolean* and *natural*), expressions of these two types, assignment instruction, reading from standard input, writing to standard output, branching and looping.
 
+Example:
+```
+program test_write_natural
+    natural n
+    natural i
+    natural f
+    natural t
+begin
+    f := 0
+    t := 3
+    for i := f to t do
+        write(69)
+        write(i)
+    done
+    read(n)
+    while not (n = 0) do
+        i := n
+        while i > 0 do
+            write(n)
+            i := i-1
+        done
+        read(n)
+    done
+end
+```
+
 See the *test/\*.ok* files to learn the syntax and semantics of the language.
 
 ## Building the project
@@ -38,7 +64,7 @@ To further compile the assembly program to an executable:
 nasm -felf output.asm
 gcc output.o io.c -o output
 ```
-Note: Under 64 bit operating systems, pass the `-m32` option to gcc.
+
 To run the executable output:
 ```
 ./output
