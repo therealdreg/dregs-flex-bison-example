@@ -1,6 +1,8 @@
 # (Dreg's Fork) Flex & Bison example
 A compiler and interpreter of a toy language. Using *C++*, *Flex* and *Bison*.
 
+[![Makefile CI](https://github.com/therealdreg/dregs-flex-bison-example/actions/workflows/makefile.yml/badge.svg?branch=main)](https://github.com/therealdreg/dregs-flex-bison-example/actions/workflows/makefile.yml)
+
 ## The toy language "While language"
 The language is called the *While language*. Its different variants often serve educational purposes. It has two types (*boolean* and *natural*), expressions of these two types, assignment instruction, reading from standard input, writing to standard output, branching and looping.
 
