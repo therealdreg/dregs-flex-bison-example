@@ -69,7 +69,15 @@ The following command compiles a While language program to NASM assembly:
 ```
 ./while -c path/to/your/while.program > output.asm
 ```
-To further compile the assembly program to an executable:
+To further compile the assembly program to an executable
+
+64 bit OS:
+```
+nasm -f elf32 output.asm
+gcc -m32 output.o io.c -o output
+```
+
+32 bit OS:
 ```
 nasm -felf output.asm
 gcc output.o io.c -o output
