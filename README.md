@@ -92,7 +92,7 @@ To run the executable output:
 
 ## TO-DO
 
-- More tests
+- More tests (especially for Kokan's work: elvis operator, multiple assignment and "for loop")
 
 ## License
 This software is licensed under the MIT license. See the *LICENSE* file for details.
