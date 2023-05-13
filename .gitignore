@@ -1,1 +1,8 @@
-Add .gitignore to ignore generated files: https://github.com/devaigergely81/flex-bison-example/pull/5
+lex.yy.cc
+location.hh
+position.hh
+stack.hh
+while
+while.tab.cc
+while.tab.hh
+temp*
