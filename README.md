@@ -1,7 +1,7 @@
 # (Dreg's Fork) Flex & Bison example
 A compiler and interpreter of a toy language. Using *C++*, *Flex* and *Bison*.
 
-## The toy language
+## The toy language "While language"
 The language is called the *While language*. Its different variants often serve educational purposes. It has two types (*boolean* and *natural*), expressions of these two types, assignment instruction, reading from standard input, writing to standard output, branching and looping.
 
 Example:
