@@ -105,7 +105,7 @@ To run the executable output:
 - improve CI (more github actions, add more distros...)
 - clang-format + clang-tidy
 - docker
-- windows instructions
+- windows instructions ( https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ )
 
 ## License
 This software is licensed under the MIT license. See the *LICENSE* file for details.
