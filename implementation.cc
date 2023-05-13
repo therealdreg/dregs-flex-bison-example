@@ -1,12 +1,13 @@
 #include "implementation.hh"
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 
 mode current_mode;
 
 void error(int line, std::string text) {
     std::cerr << "Line " << line << ": Error: " << text << std::endl;
-    exit(1);
+    std::exit(1);
 }
 
 expression::~expression() {
