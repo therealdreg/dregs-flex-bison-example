@@ -11,7 +11,7 @@ Features:
 - two types (*boolean* and *natural*)
 - expressions of these two types
 - assignment instruction
-- reading/writinng from standard input/output
+- reading/writing from standard input/output
 - branching
 - looping
 
