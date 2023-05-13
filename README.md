@@ -33,7 +33,7 @@ end
 See the *test/\*.ok* files to learn the syntax and semantics of the language.
 
 ## Building the project
-Make sure you have *g++*, *flex*, *bison* and *nasm* installed. The project was tested with the following versions: g++ 8.3.0, flex 2.6.4, bison 3.3.2, nasm 2.14. It might work with other versions as well.
+Make sure you have *g++*, *flex*, *bison* and *nasm* installed. The project was tested with the following versions: g++ 8.3.0 (C++14), flex 2.6.4, bison 3.3.2, nasm 2.14. It might work with other versions as well.
 
 Install deps (Debian based example):
 ```
