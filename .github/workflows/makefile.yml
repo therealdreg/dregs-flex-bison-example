@@ -22,6 +22,3 @@ jobs:
       
     - name: Run test
       run: make test
-      
-    - name: Fail test
-      run: echo "282" > test/test_arithmetic.out && make test
