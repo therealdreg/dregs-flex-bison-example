@@ -54,8 +54,8 @@ exec_write_natural: test/test_write_natural.ok test/test_write_natural.out
 .PHONY: comp_write_natural
 comp_write_natural: test/test_write_natural.ok test/test_write_natural.out
 	./while -c test/test_write_natural.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp > temp.out
 	diff temp.out test/test_write_natural.out
 
@@ -67,8 +67,8 @@ exec_write_boolean: test/test_write_boolean.ok test/test_write_boolean.out
 .PHONY: comp_write_boolean
 comp_write_boolean: test/test_write_boolean.ok test/test_write_boolean.out
 	./while -c test/test_write_boolean.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp > temp.out
 	diff temp.out test/test_write_boolean.out
 
@@ -80,8 +80,8 @@ exec_read: test/test_read.ok test/test_read.out
 .PHONY: comp_read
 comp_read: test/test_read.ok test/test_read.out
 	./while -c test/test_read.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp < test/test_read.out > temp.out
 	diff temp.out test/test_read.out
 
@@ -93,8 +93,8 @@ exec_arithmetic: test/test_arithmetic.ok test/test_arithmetic.out
 .PHONY: comp_arithmetic
 comp_arithmetic: test/test_arithmetic.ok test/test_arithmetic.out
 	./while -c test/test_arithmetic.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp > temp.out
 	diff temp.out test/test_arithmetic.out
 
@@ -106,8 +106,8 @@ exec_logic: test/test_logic.ok test/test_logic.out
 .PHONY: comp_logic
 comp_logic: test/test_logic.ok test/test_logic.out
 	./while -c test/test_logic.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp > temp.out
 	diff temp.out test/test_logic.out
 
@@ -119,8 +119,8 @@ exec_assignment: test/test_assignment.ok test/test_assignment.out
 .PHONY: comp_assignment
 comp_assignment: test/test_assignment.ok test/test_assignment.out
 	./while -c test/test_assignment.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp > temp.out
 	diff temp.out test/test_assignment.out
 
@@ -132,8 +132,8 @@ exec_branching: test/test_branching.ok test/test_branching.out
 .PHONY: comp_branching
 comp_branching: test/test_branching.ok test/test_branching.out
 	./while -c test/test_branching.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp > temp.out
 	diff temp.out test/test_branching.out
 
@@ -145,8 +145,8 @@ exec_looping: test/test_looping.ok test/test_looping.out
 .PHONY: comp_looping
 comp_looping: test/test_looping.ok test/test_looping.out
 	./while -c test/test_looping.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp < test/test_looping.in > temp.out
 	diff temp.out test/test_looping.out
 
@@ -158,7 +158,7 @@ exec_divisor: test/test_divisor.ok test/test_divisor.out
 .PHONY: comp_divisor
 comp_divisor: test/test_divisor.ok test/test_divisor.out
 	./while -c test/test_divisor.ok > temp.asm
-	nasm -felf temp.asm
-	gcc temp.o io.c -otemp
+	nasm -f elf32 temp.asm
+	gcc -m32 temp.o io.c -otemp
 	./temp < test/test_divisor.in > temp.out
 	diff temp.out test/test_divisor.out
