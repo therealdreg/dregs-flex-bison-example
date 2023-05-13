@@ -46,3 +46,8 @@ To run the executable output:
 
 ## License
 This software is licensed under the MIT license. See the *LICENSE* file for details.
+
+## Credits
+
+- Original repo: https://github.com/devaigergely81/flex-bison-example
+- Kokan's fork: https://github.com/Kokan/flex-bison-example
