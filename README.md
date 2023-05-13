@@ -33,8 +33,12 @@ end
 See the *test/\*.ok* files to learn the syntax and semantics of the language.
 
 ## Building the project
-Make sure you have *g++*, *flex*, *bison* and *nasm* installed. The project was tested with the following versions: g++ 6.3.0, flex 2.6.1, bison 3.0.4, nasm 2.12.01. It might work with other versions as well.
+Make sure you have *g++*, *flex*, *bison* and *nasm* installed. The project was tested with the following versions: g++ 8.3.0, flex 2.6.4, bison 3.3.2, nasm 2.14. It might work with other versions as well.
 
+Install deps (Debian based example):
+```
+sudo apt-get install g++ flex bison nasm build-essential gcc-multilib
+```
 Use the following command to build the project:
 ```
 make
@@ -46,6 +50,12 @@ make test
 Use the following command to cleanup all generated files:
 ```
 make clean
+```
+
+**WARNING**: if you are using a 32bit OS just update Makefile with the following commands:
+```
+sed -i 's/nasm -f elf32/nasm -felf/g' Makefile
+sed -i 's/gcc -m32/gcc/g' Makefile
 ```
 
 ## Using the interpreter
