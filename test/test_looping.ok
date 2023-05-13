@@ -1,7 +1,15 @@
 program test_write_natural
     natural n
     natural i
+    natural f
+    natural t
 begin
+    f := 0
+    t := 3
+    for i := f to t do
+        write(69)
+        write(i)
+    done
     read(n)
     while not (n = 0) do
         i := n
