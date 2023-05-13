@@ -99,5 +99,5 @@ This software is licensed under the MIT license. See the *LICENSE* file for deta
 
 ## Credits
 
-- Original repo: https://github.com/devaigergely81/flex-bison-example
-- Kokan's fork: https://github.com/Kokan/flex-bison-example
+- Original repo by Gergely Dévai ( @devaigergely81 ): https://github.com/devaigergely81/flex-bison-example
+- Fork by Kókai Péter ( @Kokan ): https://github.com/Kokan/flex-bison-example
