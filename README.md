@@ -37,7 +37,7 @@ Make sure you have *g++*, *flex*, *bison* and *nasm* installed. The project was 
 
 Install deps (Debian based example):
 ```
-sudo apt-get install g++ flex bison nasm build-essential gcc-multilib
+sudo apt-get install g++ flex bison nasm build-essential gcc-multilib libfl-dev
 ```
 Use the following command to build the project:
 ```
