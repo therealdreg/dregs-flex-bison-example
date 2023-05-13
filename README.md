@@ -90,6 +90,10 @@ To run the executable output:
 ./output
 ```
 
+## TO-DO
+
+- More tests
+
 ## License
 This software is licensed under the MIT license. See the *LICENSE* file for details.
 
