@@ -101,12 +101,15 @@ To run the executable output:
 
 ## TO-DO
 
-- More tests (especially for Kokan's work: elvis operator, multiple assignment and "for loop")
+- more tests (especially for Kokan's work: elvis operator, multiple assignment and "for loop")
+- improve CI (more github actions, add more distros...)
+- clang-format + clang-tidy
+- docker
 
 ## License
 This software is licensed under the MIT license. See the *LICENSE* file for details.
 
 ## Credits
 
-- Original repo by Gergely Dévai ( @devaigergely81 ): https://github.com/devaigergely81/flex-bison-example
-- Fork by Kókai Péter ( @Kokan ): https://github.com/Kokan/flex-bison-example
+- original repo by Gergely Dévai ( @devaigergely81 ): https://github.com/devaigergely81/flex-bison-example
+- fork by Kókai Péter ( @Kokan ): https://github.com/Kokan/flex-bison-example
