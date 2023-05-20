@@ -190,8 +190,8 @@ From @Kokan 's fork:
 - better doc
 - docker
 - flex+bison+windows instructions: https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ 
-- better support for windows Makefile (make clean, tests, etc...)
-- document internals: how nasm code is generated, asm snippets ...
+- better support for windows Makefile (make clean, tests, ...)
+- document internals: how nasm code is generated, asm snippets, how write_natural is linked ...
 - ...
 
 ## License
