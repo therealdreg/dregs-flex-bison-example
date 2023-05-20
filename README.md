@@ -112,18 +112,6 @@ Output (stdout):
 69
 ```
 
----
-
-powershell + windows example using stdin as input:
-```
-Write-Output "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -i
-```
-
-Output (stdout):
-```
-69
-```
-
 ## Using the compiler
 The following command compiles a While language program to NASM assembly:
 ```
@@ -148,10 +136,11 @@ To run the executable output:
 ./output
 ```
 
-Example:
+---
+
+powershell + windows example using stdin as input:
 ```
-echo -e "program dregpoc\nbegin\nwrite(69)\nend" > poc.w
-./while -c poc.w
+Write-Output "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -w
 ```
 
 Output (stdout):
