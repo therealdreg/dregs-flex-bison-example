@@ -107,6 +107,8 @@ Output (stdout):
 69
 ```
 
+---
+
 Powershell + Windows example using stdin as input:
 ```
 echo "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -i
