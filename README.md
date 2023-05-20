@@ -190,7 +190,7 @@ From @Kokan 's fork:
 - better doc
 - docker
 - flex+bison+windows instructions: https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ 
-- better support for windows Makefile (make clean etc...)
+- better support for windows Makefile (make clean, tests, etc...)
 - ...
 
 ## License
