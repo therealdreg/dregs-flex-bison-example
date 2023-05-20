@@ -8,8 +8,12 @@ while.tab.cc while.tab.hh: while.y
 	bison -d while.y
 
 .PHONY: clean
-clean:
-	rm -f lex.yy.cc while.tab.cc while.tab.hh location.hh position.hh stack.hh while temp.asm temp.o temp temp.out
+clean: no-flex-bison-clean
+        rm -f lex.yy.cc while.tab.cc while.tab.hh location.hh position.hh stack.hh
+
+.PHONY: no-flex-bison-clean
+no-flex-bison-clean:
+        rm -f while temp.asm temp.o temp temp.out
 
 .PHONY: test
 test: test_interpreter test_compiler test_lexical_errors test_syntax_errors test_semantic_errors
