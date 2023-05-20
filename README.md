@@ -172,7 +172,7 @@ From @Kokan 's fork:
 - add a basic CI github actions (makefile.yml...)
 - add tests for elvis operator (?), FOR _ := _ TO _ DO _ DONE loop ...
 - flex and bison as optional tools to build the project (uploaded pre-generated files)
-- windows support + .exe compiled with mingw (deps static)
+- dirty and uncomplete windows support + .exe compiled with mingw (deps static)
 - by default->64bit OS compiles/assembles 32bit code (added instructions for 32bit OS)
 - merged some PR's from original repo by @devaigergely81 
 - master to main
@@ -190,8 +190,8 @@ From @Kokan 's fork:
 - better doc
 - docker
 - flex+bison+windows instructions: https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ 
-- better support for windows Makefile (make clean, tests, ...)
 - document internals: how nasm code is generated, asm snippets, how write_natural is linked ...
+- better windows support: Makefile (make clean, tests, ...), compilation with nasm, port write_natural....
 - ...
 
 ## License
