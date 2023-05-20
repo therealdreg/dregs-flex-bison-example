@@ -157,7 +157,11 @@ ret
 
 ## TO-DO
 
-- ./while without specified-file-arg should read "the code" from stdin
+- ./while without specified-file-arg should read "the code" from stdin, Example:
+```
+echo -e "program dregpoc\nbegin\nwrite(69)\nend" | ./while -i
+```
+
 - more tests (especially for Kokan's work: elvis operator, multiple assignment and "for loop")
 - improve CI (more github actions, add more distros...)
 - improve Makefile (current version sucks)
@@ -165,8 +169,7 @@ ret
 - better doc
 - docker
 
-- flex+bison+windows instructions ( https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ ):
-
+- flex+bison+windows instructions: https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ 
 ```
 C:\Users\dreg\Desktop\repos\dregs-flex-bison-example>mingw32-make
 win_flex while.l
