@@ -69,6 +69,24 @@ sed -i 's/nasm -f elf32/nasm -felf/g' Makefile
 sed -i 's/gcc -m32/gcc/g' Makefile
 ```
 
+### Building the project without bison+flex installed
+
+Modify Makefile:
+```
+sed -i 's/flex/# flex/g' Makefile
+sed -i 's/bison/# bison/g' Makefile
+```
+
+Use the following command to build the project without bison+flex installed:
+```
+make
+```
+
+Don't use **make clean**, use instead the following command to cleanup all generated files:
+```
+make no-flex-bison-clean
+```
+
 ## Using the interpreter
 The following command executes a While program immediately:
 ```
