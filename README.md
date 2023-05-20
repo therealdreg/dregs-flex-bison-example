@@ -174,6 +174,23 @@ xor eax,eax
 ret
 ```
 
+## Changelog
+
+### 2023 May
+
+From @Kokan 's fork:
+- add stdin as input when no file-arg
+- add a basic CI github actions (makefile.yml...)
+- add tests for elvis operator (?), FOR _ := _ TO _ DO _ DONE loop ...
+- flex and bison as optional tools to build the project (uploaded pre-generated files)
+- windows support + .exe compiled with mingw (deps static)
+- by default->64bit OS compiles/assembles 32bit code (added instructions for 32bit OS)
+- merged some PR's from original repo by @devaigergely81 
+- master to main
+- .gitignore, .gitattributes ...
+- better README.md 
+- ...
+
 ## TO-DO
 
 - more tests (especially for Kokan's work: elvis operator, multiple assignment and "for loop")
