@@ -20,11 +20,8 @@ jobs:
     - name: Compile without flex+bison commands
       run: sed -i 's/flex /# flex /g' Makefile && sed -i 's/bison /# bison /g' Makefile && make no-flex-bison-clean && make && sed -i 's/# flex/flex/g' Makefile && sed -i 's/# bison/bison/g' Makefile 
       
-    - name: Clean all files
-      run: make clean
-      
     - name: Compile All
-      run: make
+      run: make clean && make
       
     - name: Run test
       run: make test
