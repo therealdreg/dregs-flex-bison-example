@@ -164,7 +164,7 @@ ret
 - better doc
 - docker
 
-- windows instructions ( https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ ):
+- flex+bison+windows instructions ( https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ ):
 
 ```
 C:\Users\dreg\Desktop\repos\dregs-flex-bison-example>mingw32-make
