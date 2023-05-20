@@ -55,6 +55,9 @@ Use these following commands to build the project (including flex+bison files):
 make clean
 make
 ```
+
+**WARNING**: **make clean** must be executed **first** to cleanup all generated flex+bison files 
+
 Use the following command to run tests:
 ```
 make test
