@@ -83,6 +83,8 @@ Use the following command to build the project without bison+flex installed:
 make
 ```
 
+(For windows just use **mingw32-make.exe**)
+
 Don't use **make clean**, use instead the following command to cleanup all generated files:
 ```
 make no-flex-bison-clean
