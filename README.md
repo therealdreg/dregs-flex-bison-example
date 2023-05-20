@@ -94,6 +94,17 @@ The following command executes a While program immediately:
 ./while -i path/to/your/while.program
 ```
 
+Example:
+```
+echo -e "program dregpoc\nbegin\nwrite(69)\nend" > poc.w
+./while -i poc.w
+```
+
+Output (stdio):
+```
+69
+```
+
 ## Using the compiler
 The following command compiles a While language program to NASM assembly:
 ```
@@ -118,11 +129,39 @@ To run the executable output:
 ./output
 ```
 
+Example:
+```
+echo -e "program dregpoc\nbegin\nwrite(69)\nend" > poc.w
+./while -c poc.w
+```
+
+Output (stdio):
+```
+global main
+extern write_natural
+extern read_natural
+extern write_boolean
+extern read_boolean
+
+section .bss
+
+section .text
+main:
+mov eax,69
+push eax
+call write_natural
+add esp,4
+xor eax,eax
+ret
+```
+
 ## TO-DO
 
 - more tests (especially for Kokan's work: elvis operator, multiple assignment and "for loop")
 - improve CI (more github actions, add more distros...)
+- improve Makefile (current version sucks)
 - clang-format + clang-tidy
+- better doc
 - docker
 
 - windows instructions ( https://github.com/lexxmark/winflexbison + https://osdn.net/projects/mingw/ ):
