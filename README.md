@@ -58,7 +58,7 @@ make clean
 make
 ```
 
-**WARNING**: **make clean** must be executed **first** to cleanup all generated flex+bison files 
+**WARNING**: **make clean** must be executed **first** to cleanup all pre-generated flex+bison files 
 
 Use the following command to run tests:
 ```
