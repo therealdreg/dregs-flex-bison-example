@@ -112,9 +112,9 @@ Output (stdout):
 
 ---
 
-Powershell + Windows example using stdin as input:
+powershell + windows example using stdin as input:
 ```
-echo "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -i
+Write-Output "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -i
 ```
 
 Output (stdout):
