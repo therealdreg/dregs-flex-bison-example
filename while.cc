@@ -60,27 +60,33 @@ void yy::parser::error(const location_type& loc, const std::string& msg) {
 }
 
 int main(int argc, char *argv[]) {
-    if(argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " (-c|-i) inputfile" << std::endl;
+    if(argc < 2) {
+        std::cerr << "Usage (without inputfile = stdin): " << argv[0] << " (-c|-i) [inputfile]" << std::endl;
         exit(1);
     }
-    
+
     if(std::string(argv[1]) == "-c") {
         current_mode = compiler;
     } else if(std::string(argv[1]) == "-i") {
         current_mode = interpreter;
     } else {
-        std::cerr << "Usage: " << argv[0] << "(-c|-i) inputfile" << std::endl;
+        std::cerr << "Usage (without inputfile = stdin): " << argv[0] << "(-c|-i) [inputfile]" << std::endl;
         exit(1);
     }
-    
-    std::ifstream input(argv[2]);
-    if(!input) {
-        std::cerr << "Cannot open input file: " << argv[2] << std::endl;
-        exit(1);
+
+    std::ifstream inFile;
+
+    if (argc > 2)
+    {
+        inFile = std::ifstream(argv[2]);
+        if(!inFile)
+        {
+            std::cerr << "Cannot open input file: " << argv[2] << std::endl;
+            exit(1);
+        }
     }
-    
-    lexer = new yyFlexLexer(&input);
+
+    lexer = new yyFlexLexer(inFile.is_open() ? &inFile : &std::cin);
     yy::parser parser;
     parser.parse();
     delete lexer;
