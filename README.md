@@ -149,7 +149,7 @@ echo -e "program dregpoc\nbegin\nwrite(69)\nend" > poc.w
 ./while -c poc.w
 ```
 
-Output (stdio):
+Output (stdout):
 ```
 global main
 extern write_natural
