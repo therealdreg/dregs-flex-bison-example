@@ -157,11 +157,6 @@ ret
 
 ## TO-DO
 
-- ./while without specified-file-arg should read "the code" from stdin, Example:
-```
-echo -e "program dregpoc\nbegin\nwrite(69)\nend" | ./while -i
-```
-
 - more tests (especially for Kokan's work: elvis operator, multiple assignment and "for loop")
 - improve CI (more github actions, add more distros...)
 - improve Makefile (current version sucks)
