@@ -102,7 +102,17 @@ echo -e "program dregpoc\nbegin\nwrite(69)\nend" > poc.w
 ./while -i poc.w
 ```
 
-Output (stdio):
+Output (stdout):
+```
+69
+```
+
+Powershell + Windows example using stdin as input:
+```
+echo "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -i
+```
+
+Output (stdout):
 ```
 69
 ```
