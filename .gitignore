@@ -1,8 +1,8 @@
-lex.yy.cc
-location.hh
-position.hh
-stack.hh
+# lex.yy.cc
+# location.hh
+# position.hh
+# stack.hh
 while
-while.tab.cc
-while.tab.hh
+# while.tab.cc
+# while.tab.hh
 temp*
