@@ -140,7 +140,7 @@ To run the executable output:
 
 powershell + windows example using stdin as input:
 ```
-Write-Output "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -w
+Write-Output "program dreg`nbegin`nwrite(69)`nend" | .\while.exe -c
 ```
 
 Output (stdout):
