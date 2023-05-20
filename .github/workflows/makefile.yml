@@ -18,7 +18,7 @@ jobs:
       run: sudo apt-get -y install g++ flex bison nasm build-essential gcc-multilib libfl-dev
       
     - name: Compile without flex+bison commands
-      run: sed -i 's/flex/# flex/g' Makefile && sed -i 's/bison/# bison/g' Makefile && make no-flex-bison-clean && make && sed -i 's/# flex/flex/g' Makefile && sed -i 's/# bison/bison/g' Makefile 
+      run: sed -i 's/flex /# flex /g' Makefile && sed -i 's/bison /# bison /g' Makefile && make no-flex-bison-clean && make && sed -i 's/# flex/flex/g' Makefile && sed -i 's/# bison/bison/g' Makefile 
       
     - name: Clean all files
       run: make clean
