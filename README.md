@@ -3,7 +3,7 @@ A compiler and interpreter of a toy language. Using *C++*, *Flex* and *Bison*.
 
 [![Makefile CI](https://github.com/therealdreg/dregs-flex-bison-example/actions/workflows/makefile.yml/badge.svg?branch=main)](https://github.com/therealdreg/dregs-flex-bison-example/actions/workflows/makefile.yml)
 
-**while.exe** is in this repo ready to use on Windows!
+**while.exe** program is in this repo ready to use on Windows!
 
 ## The toy language "While language"
 The language is called the *While language*. Its different variants often serve educational purposes. 
@@ -189,7 +189,7 @@ From @Kokan 's fork:
 - master to main
 - .gitignore, .gitattributes ...
 - better README.md 
-- add changelog, to-do, new license header...
+- add changelog, to-do, credits, new license header...
 - ...
 
 ## TO-DO
