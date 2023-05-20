@@ -73,8 +73,8 @@ sed -i 's/gcc -m32/gcc/g' Makefile
 
 Modify Makefile:
 ```
-sed -i 's/flex/# flex/g' Makefile
-sed -i 's/bison/# bison/g' Makefile
+sed -i 's/flex /# flex/g' Makefile
+sed -i 's/bison /# bison/g' Makefile
 ```
 
 Use the following command to build the project without bison+flex installed:
