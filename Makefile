@@ -1,5 +1,5 @@
 while: lex.yy.cc while.cc while.tab.cc while.tab.hh implementation.hh implementation.cc type_checker_implementation.cc code_generator_implementation.cc interpreter_implementation.cc
-	$(CXX) $(CFLAGS) lex.yy.cc while.cc while.tab.cc implementation.cc type_checker_implementation.cc code_generator_implementation.cc interpreter_implementation.cc -o while
+	$(CXX) $(CFLAGS) -I . lex.yy.cc while.cc while.tab.cc implementation.cc type_checker_implementation.cc code_generator_implementation.cc interpreter_implementation.cc -o while
 
 lex.yy.cc: while.l
 	flex while.l
@@ -9,7 +9,7 @@ while.tab.cc while.tab.hh: while.y
 
 .PHONY: clean
 clean: no-flex-bison-clean
-	rm -f lex.yy.cc while.tab.cc while.tab.hh location.hh position.hh stack.hh
+	rm -f lex.yy.cc while.tab.cc while.tab.hh location.hh position.hh stack.hh FlexLexer.h
 
 .PHONY: no-flex-bison-clean
 no-flex-bison-clean:
