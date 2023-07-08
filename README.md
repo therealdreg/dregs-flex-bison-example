@@ -163,7 +163,7 @@ xor eax,eax
 ret
 ```
 
-### Compile while output nasm program with nasm+mingw
+### Compile while output nasm program with nasm+mingw using powershell
 
 ```
 Write-Output "program dreg`nbegin`nwrite(69)`nend`n" | .\while.exe -c | % { $_ -replace 'write' , '_write' }  | % { $_ -replace 'read' , '_read' } | % { $_ -replace 'main' , '_main' } | out-file -encoding ascii poc.asm
