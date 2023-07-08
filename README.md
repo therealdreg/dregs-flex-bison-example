@@ -163,6 +163,28 @@ xor eax,eax
 ret
 ```
 
+### Compile while output nasm program with nasm+mingw
+
+```
+Write-Output "program dreg`nbegin`nwrite(69)`nend`n" | .\while.exe -c | % { $_ -replace 'write' , '_write' }  | % { $_ -replace 'read' , '_read' } | % { $_ -replace 'main' , '_main' } | out-file -encoding ascii poc.asm
+```
+
+```
+nasm.exe -f win32 poc.asm
+```
+
+```
+mingw32-gcc.exe poc.obj io.c -o poc.exe
+```
+
+```
+.\poc.exe
+```
+
+```
+69
+```
+
 ## Changelog
 
 ### 2023 May
